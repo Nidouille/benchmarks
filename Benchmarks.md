@@ -113,6 +113,13 @@ qemu_guest_agent_enable="YES"
 qemu_guest_agent_flags="-d -v -l /var/log/qemu-ga.log"
 ```
 
+#### 2.2.2.3 ESXi/vSphere
+
+```
+pkg install open-vm-tools-nox11  
+```
+cf KM : https://kb.vmware.com/s/article/2149806
+
 ## 2.3 Tests à effectuer
 
 [Phoronix Test Suite](http://phoronix-test-suite.com) permet de tester un large panel de paramètre qui vont des applications système, au CPU, la mémoire, le réseau, le stockage.

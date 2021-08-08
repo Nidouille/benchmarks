@@ -98,17 +98,19 @@ phoronix-test-suite benchmark apache blogbench compress-7zip iperf john-the-ripp
 ```
 pkg install qemu-guest-agent bash wget php74 php74-dom php74-zip php74-json php74-simplexml php74-openssl
 service qemu-guest-agent start
-
 freebsd-update fetch
 freebsd-update install
-
 wget https://phoronix-test-suite.com/releases/phoronix-test-suite-10.4.0.tar.gz
 tar xzvf phoronix-test-suite-10.4.0.tar.gz
 cd phoronix-test-suite
 ./install-sh
-
 phoronix-test-suite install apache blogbench compress-7zip iperf john-the-ripper openssl sqlite-speedtest phpbench t-test1 gnupg mysqlslap nginx
 phoronix-test-suite benchmark apache blogbench compress-7zip iperf john-the-ripper openssl sqlite-speedtest phpbench t-test1 gnupg mysqlslap nginx
+```
+Ajouter les lignes suivante pour que l'agent qemu ce lance a chaque démarage dans : /etc/rc.conf file
+```
+qemu_guest_agent_enable="YES"
+qemu_guest_agent_flags="-d -v -l /var/log/qemu-ga.log"
 ```
 
 ## 2.3 Tests à effectuer

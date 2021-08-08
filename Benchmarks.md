@@ -118,6 +118,10 @@ qemu_guest_agent_flags="-d -v -l /var/log/qemu-ga.log"
 ```
 pkg install open-vm-tools-nox11  
 ```
+Et dans /etc/rc.conf
+```
+vmware-guestd_enable="YES
+```
 cf KM : https://kb.vmware.com/s/article/2149806
 
 ## 2.3 Tests à effectuer

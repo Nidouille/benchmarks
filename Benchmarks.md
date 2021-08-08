@@ -79,6 +79,8 @@ dpkg -i phoronix-test-suite_10.4.0_all.deb
 
 ### 2.2.2 FreeBSD
 
+#### 2.2.2.1 XEN
+
 ```
 pkg install xen-guest-tools xe-guest-utilities bash wget php74 php74-dom php74-zip php74-json php74-simplexml php74-openssl
 freebsd-update fetch
@@ -87,6 +89,24 @@ wget https://phoronix-test-suite.com/releases/phoronix-test-suite-10.4.0.tar.gz
 tar xzvf phoronix-test-suite-10.4.0.tar.gz
 cd phoronix-test-suite
 ./install-sh
+phoronix-test-suite install apache blogbench compress-7zip iperf john-the-ripper openssl sqlite-speedtest phpbench t-test1 gnupg mysqlslap nginx
+phoronix-test-suite benchmark apache blogbench compress-7zip iperf john-the-ripper openssl sqlite-speedtest phpbench t-test1 gnupg mysqlslap nginx
+```
+
+#### 2.2.2.2 KVM
+
+```
+pkg install qemu-guest-agent bash wget php74 php74-dom php74-zip php74-json php74-simplexml php74-openssl
+service qemu-guest-agent start
+
+freebsd-update fetch
+freebsd-update install
+
+wget https://phoronix-test-suite.com/releases/phoronix-test-suite-10.4.0.tar.gz
+tar xzvf phoronix-test-suite-10.4.0.tar.gz
+cd phoronix-test-suite
+./install-sh
+
 phoronix-test-suite install apache blogbench compress-7zip iperf john-the-ripper openssl sqlite-speedtest phpbench t-test1 gnupg mysqlslap nginx
 phoronix-test-suite benchmark apache blogbench compress-7zip iperf john-the-ripper openssl sqlite-speedtest phpbench t-test1 gnupg mysqlslap nginx
 ```

@@ -63,6 +63,8 @@ Les VM ce doivent être à jours avec les adons invités quand cela est possible
 
 L'installation de base est la plus minimal possible en partition ext4 dans un seul volume
 
+![alt text](https://github.com/Nidouille/benchmarks/blob/main/pics/debian-1.png)
+
 Installation des backports
 
 ```

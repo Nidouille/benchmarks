@@ -19,7 +19,7 @@ Les benchmarks seront effectués via la solution de Phoronix : [Phoronix Test Su
 * ESXi 7
 * KVM from scratch
 * Hyper-V 2019
-* ThrueNAS avec bhyve
+* TrueNAS avec bhyve
 
 ## 1.3 OS testés
 

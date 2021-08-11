@@ -80,6 +80,7 @@ cd phoronix-test-suite
 #### *2.2.2.1 Debian*
 
 L'installation de base est la plus minimal possible en partition ext4 dans un seul volume
+![alt text](https://github.com/Nidouille/benchmarks/blob/main/pics/debian-1.png)
 
 Installation des backports
 

@@ -25,7 +25,7 @@ Les benchmarks seront effectués via la solution de Phoronix : [Phoronix Test Su
 
 * AlmaLinux 8.4
 * Debian 10
-* Debian 11 (quand la sortie officiel sera faite)
+* Debian 11 (quand la sortie officielle sera faite)
 * FreeBSD 13
 * Ubuntu 20.04 LTS
 * Windows Server 2019 (soucis de méthodologie)
@@ -153,9 +153,9 @@ cf KM : <https://kb.vmware.com/s/article/2149806>
 
 [Phoronix Test Suite](http://phoronix-test-suite.com) permet de tester un large panel de paramètre qui vont des applications système, au CPU, la mémoire, le réseau, le stockage.
 
-NB : sous Windows ou FreeBSD on a des tests qui ne peuvent être réalisé. Je fais au mieux pour obtenir quelque choses d'homogène et représentatif.
+NB : sous Windows ou FreeBSD on a des tests qui ne peuvent être réalisés. Je fais au mieux pour obtenir quelque choses d'homogène et représentatif.
 
-NB² : les benchmarks sous Windows ce font via cygwin et peuvent donc apporter un biais face aux Linux et BSD.
+NB² : les benchmarks sous Windows se font via cygwin et peuvent donc apporter un biais face aux Linux et BSD.
 
 ### 2.3.1 Processeur
 
@@ -284,6 +284,38 @@ Il sera demandé des informations sur certains benchmarks, voici ceux que j'util
 
 # **3 Résultats**
 
-## 3.1 première campagne de benchmark
+## 3.1 Première campagne de benchmark
 
 Date : du 6 ou 10 aout 2021
+Description : Cette première étape est pour prendre en mains et rectifier ma méthodologie.
+Note : Les tests sous Debian ont pris une tournure non prévue sur twitter. Les résultats sous Proxmox 7.0 montraient un effondrement des performances sous MariaDB. Cela a affecté la méthodologie initialement mise en place et a évolué, c'est pour cela que ça ne respecte pas le plan décrit plus haut.
+
+### 3.1.2 Almalinux
+
+Un seul résultat : https://openbenchmarking.org/result/2108078-IB-XCPNGALMA47
+
+
+### 3.1.2 Debian
+
+Lien des résultats : https://openbenchmarking.org/result/2108096-IB-NIDOUILLE92,2108103-IB-NIDOUILLE13,2108073-IB-XCPNGDEBI13
+
+![alt text](https://github.com/Nidouille/benchmarks/blob/main/pics/Resultats/Bench-set_1-Debian.png)
+
+### 3.1.3 FreeBSD
+
+Lien des résultats : https://openbenchmarking.org/result/2108108-IB-NIDOUILLE53,2108096-IB-NIDOUILLE44,2108088-IB-PROXMOXFR29,2108078-IB-XCPNGFEEB00
+
+![alt text](https://github.com/Nidouille/benchmarks/blob/main/pics/Resultats/Bench-set_1-FreeBSD.png)
+
+
+### 3.1.4 Conclusion
+
+Comme indiqué plus haut, les benchmarks ne ce sont pas déroulé comme prévu et je suis dans l'obligation de refaire une seconde campagne de mesure.
+Il en ressort tout de même deux choses intéressantes :
+
+* XCP-NG 8.2 qui se trouve très proche de la solution de VMware ESXi
+* Debian 10 sous Proxmox 6.4 et 7.0 a des résultats excessivement bas par rapport aux autres hypersiseurs.
+
+
+## 3.1 Deuxieme campagne de benchmark
+

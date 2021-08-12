@@ -19,7 +19,7 @@ Les benchmarks seront effectués via la solution de Phoronix : [Phoronix Test Su
 * ESXi 7
 * KVM from scratch
 * Hyper-V 2019
-* ThrueNAS avec bhyve
+* TrueNAS avec bhyve
 
 ## 1.3 OS testés
 
@@ -28,7 +28,7 @@ Les benchmarks seront effectués via la solution de Phoronix : [Phoronix Test Su
 * Debian 11 (quand la sortie officiel sera faite)
 * FreeBSD 13
 * Ubuntu 20.04 LTS
-* Windows Serer 2019 (soucis de méthodologie)
+* Windows Server 2019 (soucis de méthodologie)
 
 # **2 Méthodologie**
 
@@ -38,7 +38,7 @@ Les hyperviseurs ce doivent d'être à jours sans aucun réglage d'optimisation
 
 ### 2.1.1 Proxmox
 
-Modifier le repository pour passer sur la version gratuite comme indiquer dans la [documentation officiel](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#sysadmin_package_repositories)
+Modifier le repository pour passer sur la version gratuite comme indiqué dans la [documentation officiel](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#sysadmin_package_repositories)
 
 https://pve.proxmox.com/pve-docs/pve-admin-guide.html#sysadmin*package*repositories
 
@@ -54,7 +54,7 @@ yum update -y
 
 ## 2.2 VM
 
-Les VM ce doivent être à jours avec les adons invités quand cela est possible et éventuellement le noyau cloud si disponible (Debian)
+Les VM CE doivent être à jours avec les addons invités quand cela est possible et éventuellement le noyau cloud si disponible (Debian)
 
 * vCPU : 4
 * vRAM : 4 Go
@@ -79,7 +79,7 @@ cd phoronix-test-suite
 
 #### *2.2.2.1 Debian*
 
-L'installation de base est la plus minimal possible en partition ext4 dans un seul volume
+L'installation de base est la plus minimale possible en partition ext4 dans un seul volume
 ![alt text](https://github.com/Nidouille/benchmarks/blob/main/pics/debian-1.png)
 
 Installation des backports
@@ -92,7 +92,7 @@ deb http://deb.debian.org/debian buster-backports main contrib non-free
 apt update && apt upgrade -y && apt install linux-image-5.10.0-0.bpo.8-cloud-amd64 wget qemu-guest-agent php-cli php-xml
 ```
 
-#### *2.2.2.2 Installation de la suite Phroronix test suite*
+#### *2.2.2.2 Installation de la suite Phoronix test suite*
 
 ```
 wget http://phoronix-test-suite.com/releases/repo/pts.debian/files/phoronix-test-suite_10.4.0_all.deb
@@ -105,7 +105,7 @@ dpkg -i phoronix-test-suite_10.4.0_all.deb
 pkg install bash wget php74 php74-dom php74-zip php74-json php74-simplexml php74-openssl gcc benchmarks/phoronix-test-suite
 ```
 
-#### *2.1.3.1 Installation de la suite Phroronix test suite*
+#### *2.1.3.1 Installation de la suite Phoronix test suite*
 
 ```
 pkg install benchmarks/phoronix-test-suite
@@ -128,7 +128,7 @@ freebsd-update fetch
 freebsd-update install
 ```
 
-Ajouter les lignes suivante pour que l'agent qemu ce lance a chaque démarage dans : /etc/rc.conf file
+Ajouter les lignes suivantes pour que l'agent qemu ce lance a chaque démarage dans : /etc/rc.conf file
 
 ```
 qemu_guest_agent_enable="YES"

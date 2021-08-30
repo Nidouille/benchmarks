@@ -149,6 +149,17 @@ vmware-guestd_enable="YES
 
 cf KM : <https://kb.vmware.com/s/article/2149806>
 
+
+### 2.2.4 Windows
+
+#### *2.2.4.1 Installation de la suite Phoronix test suite*
+
+#### *2.2.4.2 XREN*
+
+#### *2.2.4.3 KVM*
+
+https://github.com/virtio-win/virtio-win-pkg-scripts
+
 ## 2.3 Benchmarks
 
 [Phoronix Test Suite](http://phoronix-test-suite.com) permet de tester un large panel de paramètre qui vont des applications système, au CPU, la mémoire, le réseau, le stockage.

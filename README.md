@@ -283,6 +283,10 @@ cf KM : <https://kb.vmware.com/s/article/2149806>
 
 #### 2.2.3.5 Hyper-V
 
+```shell
+portsnap fetch && potsnap extract
+```
+
 
 
 
@@ -358,6 +362,7 @@ Il sera demandé des informations sur certains benchmarks, voici ceux que j'util
 
 #### 2.3.7.1 Apache
 
+> ```
 > Apache HTTP Server 2.4.48:
 >     pts/apache-2.0.0
 >     System Test Configuration
@@ -370,17 +375,24 @@ Il sera demandé des informations sur certains benchmarks, voici ceux que j'util
 >         7: Test All Options
 >         ** Multiple items can be selected, delimit by a comma. **
 >         Concurrent Requests: **3**
+> ```
+>
+> 
 
 #### *2.3.7.2 BlogBench 1.1*
 
+> ```
 > BlogBench 1.1:
->    pts/blogbench-1.1.0
->    Disk Test Configuration
->          1: Read
->          2: Write
->          3: Test All Options
->          \*\* Multiple items can be selected, delimit by a comma. \*\*
->          Test: **3**
+> pts/blogbench-1.1.0
+> Disk Test Configuration
+>       1: Read
+>       2: Write
+>       3: Test All Options
+>       \*\* Multiple items can be selected, delimit by a comma. \*\*
+>       Test: **3**
+> ```
+>
+> 
 
 #### *2.3.7.3 Iperf 3.7*
 

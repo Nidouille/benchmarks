@@ -42,13 +42,13 @@ Modifier le repository pour passer sur la version gratuite comme indiqué dans l
 
 https://pve.proxmox.com/pve-docs/pve-admin-guide.html#sysadmin*package*repositories
 
-```
+```shell
 apt update && apt full-update -y && apt autoremove -y
 ```
 
 ### 2.1.2 XCP-NG
 
-```
+```shell
 yum update -y
 ```
 
@@ -60,7 +60,7 @@ yum update -y
 
 ### 2.1.2 Hyper-V
 
-Utilisation de la version de Hyper-V 2019 Core disponible en téléchargement gratuit sur le site de Microsoft [Evaluation Center](https://www.microsoft.com/en-us/evalcenter/evaluate-hyper-v-server-2019) 
+Utilisation de la version de Hyper-V Server 2019 disponible en téléchargement gratuit sur le site de Microsoft [Evaluation Center](https://www.microsoft.com/en-us/evalcenter/evaluate-hyper-v-server-2019) 
 
 #### 2.1.2.1 Paramétrage de l'utilisation a distance
 
@@ -131,6 +131,10 @@ Get-NetAdapterBinding -Name "nom de l'interface qui nous intéresse"
 Disable-NetAdapterBinding -Name "Ethernet0 2" -ComponentID ms_tcpip6 -PassThru
 ```
 
+### 2.1.2.2 Linux/FreeBSD
+
+Microsoft a intégré le support d'Hyper-V dans certains OS comme FreeBSD, Ubuntu ce qui permet l'utilisation de ses OS en full virtualisation dit generation 2.
+
 
 
 ## 2.2 VM
@@ -143,11 +147,13 @@ Les VM CE doivent être à jours avec les addons invités quand cela est possibl
 
 ### 2.2.1 AlmaLinux
 
+#### 2.2.1.1 Pré requis
+
 ```shell
 dnf install php-cli php-xml php-json wget bash-completion expat expat-devel tar gcc autoconf automake cmake-data unzip bzip2 bzip2-devel gnupg2 expat flex libevent-devel libgpg-error-devel libgcrypt-devel libzip-devel ncurses-devel perl perl-Time-HiRes perl-utils openssl openssl-devel pcre-devel zlib-devel libgcc gcc-c++ tcl bison 
 ```
 
-#### *2.2.1.1 Installation de la suite Phroronix test suite*
+#### *2.2.1.2 Installation de la suite Phroronix test suite*
 
 ```shell
 wget https://phoronix-test-suite.com/releases/phoronix-test-suite-10.4.0.tar.gz
@@ -163,16 +169,35 @@ cd phoronix-test-suite
 L'installation de base est la plus minimale possible en partition ext4 dans un seul volume
 ![alt text](https://github.com/Nidouille/benchmarks/blob/main/pics/debian-1.png)
 
-Installation des backports
+##### 2.2.2.1.1 Installation des backports (facultatif)
 
 ```
 deb http://deb.debian.org/debian bullseye-backports main contrib non-free
 deb-src http://deb.debian.org/debian bullseye-backports main contrib non-free
 ```
 
+
+
+##### 2.2.2.1.2 Pré requis
+
 ```shell
-apt update && apt upgrade -y && apt install linux-image-5.10.0-0.bpo.8-cloud-amd64 wget qemu-guest-agent php-cli php-xml
+apt update && apt upgrade -y && apt install -y linux-image-cloud-amd64 wget unzip cul git gnupg gnupg2 7zip qemu-guest-agent php-cli php-xml
 ```
+
+##### 2.2.2.1.3 KVM
+
+```shell
+apt install -y qemu-guest-agent
+```
+
+##### 2.2.2.1.4 XCP-ng
+
+```shell
+mount /dev/cdrom /mnt
+/mnt/Linux/install.sh
+```
+
+
 
 #### 2.2.2.2 Ubuntu
 
@@ -189,7 +214,7 @@ apt install -y linux-image-azure
 #### 2.2.2.2.1 KVM
 
 ```shell
-apt install -y linux-image-kvm
+apt install -y linux-image-kvm qemu-guest-agent
 ```
 
 
@@ -220,7 +245,7 @@ cd phoronix-test-suite
 
 #### *2.2.3.2 XEN*
 
-```
+```shell
 pkg install xen-guest-tools xe-guest-utilities 
 freebsd-update fetch
 freebsd-update install
@@ -228,7 +253,7 @@ freebsd-update install
 
 #### *2.2.3.3 KVM*
 
-```
+```shell
 pkg install -y qemu-guest-agent bash wget php74 php74-dom php74-zip php74-json php74-simplexml php74-openssl gcc sudo p7zip
 service qemu-guest-agent start
 freebsd-update fetch
@@ -237,24 +262,26 @@ freebsd-update install
 
 Ajouter les lignes suivantes pour que l'agent qemu ce lance a chaque démarage dans : /etc/rc.conf file
 
-```
+```properties
 qemu_guest_agent_enable="YES"
 qemu_guest_agent_flags="-d -v -l /var/log/qemu-ga.log"
 ```
 
 #### *2.2.3.4 ESXi*
 
-```
+```shell
 pkg install open-vm-tools-nox11  
 ```
 
 Et dans /etc/rc.conf
 
-```
-vmware-guestd_enable="YES
+```properties
+vmware-guestd_enable="YES"
 ```
 
 cf KM : <https://kb.vmware.com/s/article/2149806>
+
+#### 2.2.3.5 Hyper-V
 
 
 
@@ -317,13 +344,13 @@ NB² : les benchmarks sous Windows se font via cygwin et peuvent donc apporter u
 
 ### 2.3.6 Commande pour installer les tests
 
-```
+```shell
 phoronix-test-suite install apache blogbench compress-7zip iperf john-the-ripper openssl sqlite-speedtest phpbench t-test1 gnupg mysqlslap nginx pgbench
 ```
 
 ### 2.3.7 Commande pour lancer les tests
 
-```
+```shell
 phoronix-test-suite benchmark apache blogbench compress-7zip iperf john-the-ripper openssl sqlite-speedtest phpbench t-test1 gnupg mysqlslap nginx pgbench
 ```
 
@@ -331,18 +358,18 @@ Il sera demandé des informations sur certains benchmarks, voici ceux que j'util
 
 #### 2.3.7.1 Apache
 
-Apache HTTP Server 2.4.48:
-    pts/apache-2.0.0
-    System Test Configuration
-        1: 1
-        2: 20
-        3: 100
-        4: 200
-        5: 500
-        6: 1000
-        7: Test All Options
-        ** Multiple items can be selected, delimit by a comma. **
-        Concurrent Requests: **3**
+> Apache HTTP Server 2.4.48:
+>     pts/apache-2.0.0
+>     System Test Configuration
+>         1: 1
+>         2: 20
+>         3: 100
+>         4: 200
+>         5: 500
+>         6: 1000
+>         7: Test All Options
+>         ** Multiple items can be selected, delimit by a comma. **
+>         Concurrent Requests: **3**
 
 #### *2.3.7.2 BlogBench 1.1*
 
@@ -408,14 +435,14 @@ Apache HTTP Server 2.4.48:
 
 #### 2.3.7.5 OpenSSL
 
-OpenSSL 3.0:
-    pts/openssl-3.0.1
-    Processor Test Configuration
-        1: RSA4096
-        2: SHA256
-        3: Test All Options
-        ** Multiple items can be selected, delimit by a comma. **
-        Algorithm: **3**
+> OpenSSL 3.0:
+>     pts/openssl-3.0.1
+>     Processor Test Configuration
+>         1: RSA4096
+>         2: SHA256
+>         3: Test All Options
+>         ** Multiple items can be selected, delimit by a comma. **
+>         Algorithm: **3**
 
 #### *2.3.7.6 t-test1*
 
@@ -430,18 +457,18 @@ OpenSSL 3.0:
 
 #### 2.3.7.7 nginx
 
-nginx 1.21.1:
-    pts/nginx-2.0.0
-    System Test Configuration
-        1: 1
-        2: 20
-        3: 100
-        4: 200
-        5: 500
-        6: 1000
-        7: Test All Options
-        ** Multiple items can be selected, delimit by a comma. **
-        Concurrent Requests: **3**
+> nginx 1.21.1:
+>     pts/nginx-2.0.0
+>     System Test Configuration
+>         1: 1
+>         2: 20
+>         3: 100
+>         4: 200
+>         5: 500
+>         6: 1000
+>         7: Test All Options
+>         ** Multiple items can be selected, delimit by a comma. **
+>         Concurrent Requests: **3**
 
 #### *2.3.7.8 mysqlslap*
 
@@ -497,7 +524,7 @@ Description :
 | Hyper-V Server 2019 gen 1 ZFS | https://openbenchmarking.org/result/2109185-IB-FREEBSDHY02 |
 | Hyper-V Server 2019 gen 2 ZFS |                                                            |
 | Proxmox 7 UFS                 |                                                            |
-| Proxmox 7                     |                                                            |
+| Proxmox 7  ZFS                |                                                            |
 | XCP-ng 8.2 UFS                | https://openbenchmarking.org/result/2109143-IB-BSDUFSXCP55 |
 | XCP-ng 8.2 ZFS                | https://openbenchmarking.org/result/2109147-IB-FREEBSDZF84 |
 

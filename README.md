@@ -147,13 +147,37 @@ Les VM CE doivent être à jours avec les addons invités quand cela est possibl
 
 ### 2.2.1 AlmaLinux
 
-#### 2.2.1.1 Pré requis
+#### 2.2.1.1 Désactiver Kdump
+
+Cette opération ce fait lors de installation de l'OS
+
+![](C:\Users\nidal\Documents\pics\Almalinix-Install-1.png)
+
+
+
+#### 2.2.1.2 Pré requis
+
+Installation du dépôt EPEL
 
 ```shell
-dnf install php-cli php-xml php-json wget bash-completion expat expat-devel tar gcc autoconf automake cmake-data unzip bzip2 bzip2-devel gnupg2 expat flex libevent-devel libgpg-error-devel libgcrypt-devel libzip-devel ncurses-devel perl perl-Time-HiRes perl-utils openssl openssl-devel pcre-devel zlib-devel libgcc gcc-c++ tcl bison 
+dnf install -y epel-release && dnf update -y
 ```
 
-#### *2.2.1.2 Installation de la suite Phroronix test suite*
+Les dépendances
+
+```shell
+dnf install -y php-cli php-xml php-json wget bash-completion expat expat-devel tar gcc autoconf automake cmake-data unzip bzip2 bzip2-devel gnupg1 gnupg2 expat flex libevent-devel libgpg-error-devel libgcrypt-devel libzip-devel ncurses-devel perl perl-Time-HiRes perl-utils openssl openssl-devel pcre-devel zlib-devel libgcc gcc-c++ tcl bison golang npth libksba libassuan
+```
+
+#### 2.2.1.3 Hyper-V
+
+```shell
+dnf install -y hyperv-daemons hyperv-tools
+```
+
+
+
+#### *2.2.1.5 Installation de la suite Phroronix test suite*
 
 ```shell
 wget https://phoronix-test-suite.com/releases/phoronix-test-suite-10.4.0.tar.gz
@@ -161,6 +185,8 @@ tar xzvf phoronix-test-suite-10.4.0.tar.gz
 cd phoronix-test-suite
 ./install-sh
 ```
+
+
 
 ### 2.2.2 Debian/Ubuntu
 
@@ -181,16 +207,24 @@ deb-src http://deb.debian.org/debian bullseye-backports main contrib non-free
 ##### 2.2.2.1.2 Pré requis
 
 ```shell
-apt update && apt upgrade -y && apt install -y linux-image-cloud-amd64 wget unzip cul git gnupg gnupg2 7zip qemu-guest-agent php-cli php-xml
+apt update && apt upgrade -y && apt install -y linux-image-cloud-amd64 wget unzip curl git gnupg gnupg2 p7zip qemu-guest-agent php-cli php-xml bash-completion cmake autoconf golang build-essential apt-file
 ```
 
-##### 2.2.2.1.3 KVM
+##### 2.2.2.1.3 Hyper-V
+
+```shell
+apt install -y hyperv-daemons
+```
+
+Source : [Supported Debian virtual machines on Hyper-V](https://docs.microsoft.com/en-us/windows-server/virtualization/hyper-v/supported-debian-virtual-machines-on-hyper-v) && [hyperv-daemons](https://packages.debian.org/fr/bullseye/hyperv-daemons) 
+
+##### 2.2.2.1.4 KVM
 
 ```shell
 apt install -y qemu-guest-agent
 ```
 
-##### 2.2.2.1.4 XCP-ng
+##### 2.2.2.1.5 XCP-ng
 
 ```shell
 mount /dev/cdrom /mnt
@@ -205,13 +239,15 @@ mount /dev/cdrom /mnt
 apt update && apt upgrade -y && apt install wget curl git 7zip php-cli php-xml unzip curl git gnupg gnupg2
 ```
 
-#### 2.2.2.2.1 Hyper-V
+##### 2.2.2.2.1 Hyper-V
 
 ```shell
 apt install -y linux-image-azure
 ```
 
-#### 2.2.2.2.1 KVM
+Source : [Supported Ubuntu virtual machines on Hyper-V](https://docs.microsoft.com/en-us/windows-server/virtualization/hyper-v/supported-ubuntu-virtual-machines-on-hyper-v) 
+
+##### 2.2.2.2.1 KVM
 
 ```shell
 apt install -y linux-image-kvm qemu-guest-agent
@@ -231,7 +267,9 @@ cd phoronix-test-suite
 ### 2.2.3 FreeBSD
 
 ```shell
-pkg install bash wget php74 php74-dom php74-zip php74-json php74-simplexml php74-openssl gcc sudo p7zip
+pkg install -y bash wget php74 php74-dom php74-zip php74-json php74-simplexml php74-openssl gcc sudo p7zip htop tmux
+freebsd-update fetch
+freebsd-update install
 ```
 
 #### *2.1.3.1 Installation de la suite Phoronix test suite*
@@ -247,17 +285,13 @@ cd phoronix-test-suite
 
 ```shell
 pkg install xen-guest-tools xe-guest-utilities 
-freebsd-update fetch
-freebsd-update install
 ```
 
 #### *2.2.3.3 KVM*
 
 ```shell
-pkg install -y qemu-guest-agent bash wget php74 php74-dom php74-zip php74-json php74-simplexml php74-openssl gcc sudo p7zip
+pkg install -y qemu-guest-agent
 service qemu-guest-agent start
-freebsd-update fetch
-freebsd-update install
 ```
 
 Ajouter les lignes suivantes pour que l'agent qemu ce lance a chaque démarage dans : /etc/rc.conf file
@@ -283,11 +317,7 @@ cf KM : <https://kb.vmware.com/s/article/2149806>
 
 #### 2.2.3.5 Hyper-V
 
-```shell
-portsnap fetch && potsnap extract
-```
-
-
+Intégré dans le kernel .
 
 
 ### 2.2.4 Windows
@@ -362,146 +392,146 @@ Il sera demandé des informations sur certains benchmarks, voici ceux que j'util
 
 #### 2.3.7.1 Apache
 
-> ```
-> Apache HTTP Server 2.4.48:
->     pts/apache-2.0.0
->     System Test Configuration
->         1: 1
->         2: 20
->         3: 100
->         4: 200
->         5: 500
->         6: 1000
->         7: Test All Options
->         ** Multiple items can be selected, delimit by a comma. **
->         Concurrent Requests: **3**
-> ```
->
-> 
+```shell
+Apache HTTP Server 2.4.48:
+    pts/apache-2.0.0
+    System Test Configuration
+        1: 1
+        2: 20
+        3: 100
+        4: 200
+        5: 500
+        6: 1000
+        7: Test All Options
+        ** Multiple items can be selected, delimit by a comma. **
+        Concurrent Requests: **3**
+```
+
+
 
 #### *2.3.7.2 BlogBench 1.1*
 
-> ```
-> BlogBench 1.1:
-> pts/blogbench-1.1.0
-> Disk Test Configuration
->       1: Read
->       2: Write
->       3: Test All Options
->       \*\* Multiple items can be selected, delimit by a comma. \*\*
->       Test: **3**
-> ```
->
-> 
+```shell
+BlogBench 1.1:
+pts/blogbench-1.1.0
+Disk Test Configuration
+      1: Read
+      2: Write
+      3: Test All Options
+      \*\* Multiple items can be selected, delimit by a comma. \*\*
+      Test: **3**
+```
+
+
 
 #### *2.3.7.3 Iperf 3.7*
 
-> ```
-> iPerf 3.7:
-> pts/iperf-1.1.1
-> Network Test Configuration
-> Server Address [Use 'localhost' if wishing to benchmark the local system/server performance.]
-> 
-> Enter Value: **192.168.1.27**
-> 
-> Server Port [The default iperf3 server port is 5201.]
-> 
-> Enter Positive Number: **5201**
-> 
-> ​      1: 10 Seconds
-> ​      2: 30 Seconds
-> ​      3: 60 Seconds
-> ​      4: 360 Seconds
-> ​      5: Test All Options
-> ​      \*\* Multiple items can be selected, delimit by a comma. \*\*
-> ​      Duration: 4
-> 
-> ​      1: TCP
-> ​      2: UDP
-> ​      3: UDP - 100Mbit Objective
-> ​      4: UDP - 1000Mbit Objective
-> ​      5: Test All Options
-> ​      \*\* Multiple items can be selected, delimit by a comma. \*\*
-> ​      Test: **1**
-> 
-> 
-> ​      1: 1
-> ​      2: 5
-> ​      3: 10
-> ​      4: 20
-> ​      5: 32
-> ​      6: 64
-> ​      7: Test All Options
-> ​      \*\* Multiple items can be selected, delimit by a comma. \*\*
-> ​      Parallel: **4**
-> ```
->
->
-> 
+```shell
+iPerf 3.7:
+pts/iperf-1.1.1
+Network Test Configuration
+Server Address [Use 'localhost' if wishing to benchmark the local system/server performance.]
+
+Enter Value: **192.168.1.27**
+
+Server Port [The default iperf3 server port is 5201.]
+
+Enter Positive Number: **5201**
+
+       1: 10 Seconds
+       2: 30 Seconds
+       3: 60 Seconds
+       4: 360 Seconds
+       5: Test All Options
+       \*\* Multiple items can be selected, delimit by a comma. \*\*
+       Duration: 4
+
+       1: TCP
+       2: UDP
+       3: UDP - 100Mbit Objective
+       4: UDP - 1000Mbit Objective
+       5: Test All Options
+       \*\* Multiple items can be selected, delimit by a comma. \*\*
+       Test: **1**
+
+
+       1: 1
+       2: 5
+       3: 10
+       4: 20
+       5: 32
+       6: 64
+       7: Test All Options
+       \*\* Multiple items can be selected, delimit by a comma. \*\*
+       Parallel: **4**
+```
+
+
+
 
 #### *2.3.7.4 John The Ripper*
 
->           ```
->           John The Ripper 1.9.0-jumbo-1:
->           pts/john-the-ripper-1.7.2
->           Processor Test Configuration
->                     1: MD5
->                     2: Blowfish
->                     3: Test All Options
->                     \*\* Multiple items can be selected, delimit by a comma. \*\*
->                     Test: **3**
->           ```
->
->           
+```shell
+John The Ripper 1.9.0-jumbo-1:
+pts/john-the-ripper-1.7.2
+Processor Test Configuration
+          1: MD5
+          2: Blowfish
+          3: Test All Options
+          \*\* Multiple items can be selected, delimit by a comma. \*\*
+          Test: **3**
+```
+
+
 
 #### 2.3.7.5 OpenSSL
 
-> ```
-> OpenSSL 3.0:
->     pts/openssl-3.0.1
->     Processor Test Configuration
->         1: RSA4096
->         2: SHA256
->         3: Test All Options
->         ** Multiple items can be selected, delimit by a comma. **
->         Algorithm: **3**
-> ```
->
-> 
+```shell
+OpenSSL 3.0:
+    pts/openssl-3.0.1
+    Processor Test Configuration
+        1: RSA4096
+        2: SHA256
+        3: Test All Options
+        ** Multiple items can be selected, delimit by a comma. **
+        Algorithm: **3**
+```
+
+
 
 #### *2.3.7.6 t-test1*
 
->           ```
->           t-test1 2017-01-13:
->           pts/t-test1-1.0.1
->           Memory Test Configuration
->                     1: 1
->                     2: 2
->                     3: Test All Options
->                     \*\* Multiple items can be selected, delimit by a comma. \*\*
->                     Threads: **3**
->           ```
->
->           
+```shell
+t-test1 2017-01-13:
+pts/t-test1-1.0.1
+Memory Test Configuration
+          1: 1
+          2: 2
+          3: Test All Options
+          \*\* Multiple items can be selected, delimit by a comma. \*\*
+          Threads: **3**
+```
+
+
 
 #### 2.3.7.7 nginx
 
-> ```
-> nginx 1.21.1:
->     pts/nginx-2.0.0
->     System Test Configuration
->         1: 1
->         2: 20
->         3: 100
->         4: 200
->         5: 500
->         6: 1000
->         7: Test All Options
->         ** Multiple items can be selected, delimit by a comma. **
->         Concurrent Requests: **3**
-> ```
->
-> 
+```shell
+nginx 1.21.1:
+    pts/nginx-2.0.0
+    System Test Configuration
+        1: 1
+        2: 20
+        3: 100
+        4: 200
+        5: 500
+        6: 1000
+        7: Test All Options
+        ** Multiple items can be selected, delimit by a comma. **
+        Concurrent Requests: **3**
+```
+
+
 
 #### *2.3.7.8 mysqlslap*
 
@@ -509,34 +539,34 @@ Il sera demandé des informations sur certains benchmarks, voici ceux que j'util
 
 #### *2.3.7.9 pgbench* 
 
-> ```
-> PostgreSQL pgbench 13.0:
->     pts/pgbench-1.10.2
->     System Test Configuration
->         1: 1
->         2: 100
->         3: 1000
->         4: 10000
->         5: Test All Options
->         ** Multiple items can be selected, delimit by a comma. **
->         Scaling Factor: **1**
-> 
-> ​       1: 1
-> ​       2: 50
-> ​       3: 100
-> ​       4: 250
-> ​       5: Test All Options
-> ​       ** Multiple items can be selected, delimit by a comma. **
-> ​       Clients: **3**
-> 
-> ​       1: Read Write
-> ​       2: Read Only
-> ​       3: Test All Options
-> ​       ** Multiple items can be selected, delimit by a comma. **
-> ​       Mode: **3**
-> ```
->
-> 
+```shell
+PostgreSQL pgbench 13.0:
+    pts/pgbench-1.10.2
+    System Test Configuration
+        1: 1
+        2: 100
+        3: 1000
+        4: 10000
+        5: Test All Options
+        ** Multiple items can be selected, delimit by a comma. **
+        Scaling Factor: **1**
+
+        1: 1
+        2: 50
+        3: 100
+        4: 250
+        5: Test All Options
+        ** Multiple items can be selected, delimit by a comma. **
+        Clients: **3**
+
+        1: Read Write
+        2: Read Only
+        3: Test All Options
+        ** Multiple items can be selected, delimit by a comma. **
+        Mode: **3**
+```
+
+
 
 # **3 Résultats**
 
@@ -556,10 +586,10 @@ Description :
 | Physique ZFS                  | https://openbenchmarking.org/result/2109123-IB-NIDOUILLE82 |
 | ESXi 7u1 UFS                  | https://openbenchmarking.org/result/2109137-IB-NIDOUILLE37 |
 | ESXi 7u1 ZFS                  |                                                            |
-| Hyper-V Server 2019 gen 1 UFS | https://openbenchmarking.org/result/2109180-IB-FREEBSDHY81 |
-| Hyper-V Server 2019 gen 2 UFS | https://openbenchmarking.org/result/2109176-IB-FREEBSD1798 |
-| Hyper-V Server 2019 gen 1 ZFS | https://openbenchmarking.org/result/2109185-IB-FREEBSDHY02 |
-| Hyper-V Server 2019 gen 2 ZFS |                                                            |
+| Hyper-V Server 2019 gen 1 UFS | https://openbenchmarking.org/result/2109202-IB-FREEBSDHY89 |
+| Hyper-V Server 2019 gen 2 UFS | https://openbenchmarking.org/result/2109209-IB-FREEBSDHY16 |
+| Hyper-V Server 2019 gen 1 ZFS | https://openbenchmarking.org/result/2109206-IB-FREEBSDHY29 |
+| Hyper-V Server 2019 gen 2 ZFS | https://openbenchmarking.org/result/2109218-IB-FREEBSDHY04 |
 | Proxmox 7 UFS                 |                                                            |
 | Proxmox 7  ZFS                |                                                            |
 | XCP-ng 8.2 UFS                | https://openbenchmarking.org/result/2109143-IB-BSDUFSXCP55 |
@@ -569,14 +599,14 @@ Description :
 
 ## 3.1.2 Debian 11
 
-| Tests                     | Résultats sur OpenBenchmarking |
-| ------------------------- | ------------------------------ |
-| Physique                  |                                |
-| ESXi 7u1                  |                                |
-| Hyper-V Server 2019 gen 1 |                                |
-| Hyper-V Server 2019 gen 2 |                                |
-| Proxmox 7                 |                                |
-| XCP-ng 8.2                |                                |
+| Tests                     | Résultats sur OpenBenchmarking                             |
+| ------------------------- | ---------------------------------------------------------- |
+| Physique                  |                                                            |
+| ESXi 7u1                  |                                                            |
+| Hyper-V Server 2019 gen 1 | https://openbenchmarking.org/result/2109219-IB-DEBIANHYP47 |
+| Hyper-V Server 2019 gen 2 | https://openbenchmarking.org/result/2109211-IB-DEBIANHYP70 |
+| Proxmox 7                 |                                                            |
+| XCP-ng 8.2                |                                                            |
 
 
 
@@ -608,14 +638,14 @@ Description :
 
 ## 3.1.5 Windows 2019 Server Core
 
-| Tests                     | Résultats sur OpenBenchmarking |
-| ------------------------- | ------------------------------ |
-| Physique                  |                                |
-| ESXi 7u1                  |                                |
-| Hyper-V Server 2019 gen 1 |                                |
-| Hyper-V Server 2019 gen 2 |                                |
-| Proxmox 7                 |                                |
-| XCP-ng 8.2                |                                |
+| Tests                     | Résultats sur OpenBenchmarking                             |
+| ------------------------- | ---------------------------------------------------------- |
+| Physique                  |                                                            |
+| ESXi 7u1                  |                                                            |
+| Hyper-V Server 2019 gen 1 | https://openbenchmarking.org/result/2109229-IB-WINDOWS2039 |
+| Hyper-V Server 2019 gen 2 | https://openbenchmarking.org/result/2109199-IB-WIN2009SE38 |
+| Proxmox 7                 |                                                            |
+| XCP-ng 8.2                |                                                            |
 
 
 

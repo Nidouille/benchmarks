@@ -151,8 +151,7 @@ Les VM CE doivent être à jours avec les addons invités quand cela est possibl
 
 Cette opération ce fait lors de installation de l'OS
 
-![](C:\Users\nidal\Documents\pics\Almalinix-Install-1.png)
-
+![](https://github.com/Nidouille/benchmarks/blob/main/pics/Almalinix-Install-1.png)
 
 
 #### 2.2.1.2 Pré requis

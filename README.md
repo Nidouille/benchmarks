@@ -590,7 +590,7 @@ Description :
 | Hyper-V Server 2019 gen 1 ZFS | https://openbenchmarking.org/result/2109206-IB-FREEBSDHY29 |
 | Hyper-V Server 2019 gen 2 ZFS | https://openbenchmarking.org/result/2109218-IB-FREEBSDHY04 |
 | Proxmox 7 UFS                 |                                                            |
-| Proxmox 7 ZFS                |                                                            |
+| Proxmox 7 ZFS                 |                                                            |
 | XCP-ng 8.2 UFS                | https://openbenchmarking.org/result/2109143-IB-BSDUFSXCP55 |
 | XCP-ng 8.2 ZFS                | https://openbenchmarking.org/result/2109147-IB-FREEBSDZF84 |
 

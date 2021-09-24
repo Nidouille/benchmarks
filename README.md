@@ -2,7 +2,7 @@
 
 # **1 Introduction**
 
-Les benchmarks seront effectués via la solution de Phoronix : [Phoronix Test Suite](http://phoronix-test-suite.com) et les résultats uploadé sur le site affilié [OpenBenchmarking](https://openbenchmarking.org).
+Les benchmarks seront effectués via la solution de Phoronix : [Phoronix Test Suite](http://phoronix-test-suite.com) et les résultats uploadés sur le site affilié [OpenBenchmarking](https://openbenchmarking.org).
 
 ## 1.1 Matériel de test
 
@@ -93,7 +93,7 @@ Installation de la console de gestion Hyper-V
 Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Hyper-V-Tools-All -All
 ```
 
-Contrôler que l'interfasse réseau du poste est en private
+Contrôler que l’interface réseau du poste est en private
 
 ```powershell
 Get-NetConnectionProfile
@@ -133,7 +133,7 @@ Disable-NetAdapterBinding -Name "Ethernet0 2" -ComponentID ms_tcpip6 -PassThru
 
 ### 2.1.2.2 Linux/FreeBSD
 
-Microsoft a intégré le support d'Hyper-V dans certains OS comme FreeBSD, Ubuntu ce qui permet l'utilisation de ses OS en full virtualisation dit generation 2.
+Microsoft a intégré le support d'Hyper-V dans certains OS comme FreeBSD et Ubuntu, ce qui permet l'utilisation de ces OS en mode full virtualisation dit generation 2.
 
 
 
@@ -149,7 +149,7 @@ Les VM CE doivent être à jours avec les addons invités quand cela est possibl
 
 #### 2.2.1.1 Désactiver Kdump
 
-Cette opération ce fait lors de installation de l'OS
+Cette opération se fait lors de installation de l'OS
 
 ![](https://github.com/Nidouille/benchmarks/blob/main/pics/Almalinix-Install-1.png)
 
@@ -203,7 +203,7 @@ deb-src http://deb.debian.org/debian bullseye-backports main contrib non-free
 
 
 
-##### 2.2.2.1.2 Pré requis
+##### 2.2.2.1.2 Prérequis
 
 ```shell
 apt update && apt upgrade -y && apt install -y linux-image-cloud-amd64 wget unzip curl git gnupg gnupg2 p7zip qemu-guest-agent php-cli php-xml bash-completion cmake autoconf golang build-essential apt-file
@@ -293,7 +293,7 @@ pkg install -y qemu-guest-agent
 service qemu-guest-agent start
 ```
 
-Ajouter les lignes suivantes pour que l'agent qemu ce lance a chaque démarage dans : /etc/rc.conf file
+Ajouter les lignes suivantes pour que l'agent qemu se lance à chaque démarrage dans le fichier : /etc/rc.conf
 
 ```properties
 qemu_guest_agent_enable="YES"
@@ -340,9 +340,9 @@ https://github.com/virtio-win/virtio-win-pkg-scripts
 
 ## 2.3 Benchmarks
 
-[Phoronix Test Suite](http://phoronix-test-suite.com) permet de tester un large panel de paramètre qui vont des applications système, au CPU, la mémoire, le réseau, le stockage.
+[Phoronix Test Suite](http://phoronix-test-suite.com) permet de tester un large panel de paramètres qui vont des applications système, au CPU, la mémoire, le réseau, le stockage.
 
-NB : sous Windows ou FreeBSD on a des tests qui ne peuvent être réalisés. Je fais au mieux pour obtenir quelque choses d'homogène et représentatif.
+NB : sous Windows ou FreeBSD, on a des tests qui ne peuvent être réalisés. Je fais au mieux pour obtenir quelque chose d'homogène et représentatif.
 
 NB² : les benchmarks sous Windows se font via cygwin et peuvent donc apporter un biais face aux Linux et BSD.
 
@@ -365,7 +365,7 @@ NB² : les benchmarks sous Windows se font via cygwin et peuvent donc apporter u
 * pts/blogbench : BlogBench
 * pts/sqlite : SQLite
 
-### 2.3.5 System
+### 2.3.5 Système
 
 * pts/apache : Apache Benchmark
 * pts/gnupg : GnuPG
@@ -590,7 +590,7 @@ Description :
 | Hyper-V Server 2019 gen 1 ZFS | https://openbenchmarking.org/result/2109206-IB-FREEBSDHY29 |
 | Hyper-V Server 2019 gen 2 ZFS | https://openbenchmarking.org/result/2109218-IB-FREEBSDHY04 |
 | Proxmox 7 UFS                 |                                                            |
-| Proxmox 7  ZFS                |                                                            |
+| Proxmox 7 ZFS                 |                                                            |
 | XCP-ng 8.2 UFS                | https://openbenchmarking.org/result/2109143-IB-BSDUFSXCP55 |
 | XCP-ng 8.2 ZFS                | https://openbenchmarking.org/result/2109147-IB-FREEBSDZF84 |
 

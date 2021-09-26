@@ -56,7 +56,14 @@ Si vous clonez une VM, celle ci passera au format .qcow2 légèrement moins perf
 
 Mes réglages habituels et par réflexe sont le passage du contrôleur de stockage en **VirtIO Block** et de laisser le type de CPU en **kvm64**.
 
-
+![](https://github.com/Nidouille/benchmarks/blob/main/pics/Proxmox/Proxmox-vm-1.png)
+![](https://github.com/Nidouille/benchmarks/blob/main/pics/Proxmox/Proxmox-vm-2.png)
+![](https://github.com/Nidouille/benchmarks/blob/main/pics/Proxmox/Proxmox-vm-3.png)
+![](https://github.com/Nidouille/benchmarks/blob/main/pics/Proxmox/Proxmox-vm-4.png)
+![](https://github.com/Nidouille/benchmarks/blob/main/pics/Proxmox/Proxmox-vm-5.png)
+![](https://github.com/Nidouille/benchmarks/blob/main/pics/Proxmox/Proxmox-vm-6.png)
+![](https://github.com/Nidouille/benchmarks/blob/main/pics/Proxmox/Proxmox-vm-7.png)
+![](https://github.com/Nidouille/benchmarks/blob/main/pics/Proxmox/Proxmox-vm-8.png)
 
 ### 2.1.2 XCP-NG
 

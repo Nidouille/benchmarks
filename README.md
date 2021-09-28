@@ -6,11 +6,26 @@ Les benchmarks seront effectués via la solution de Phoronix : [Phoronix Test Su
 
 ## 1.1 Matériel de test
 
+### 1.1.1 Serveur de virtualisation
+
 * Carte mère : [AsrockRack X470D4U](https://www.asrockrack.com/general/productdetail.asp?Model=X470D4U#Specifications)
 * CPU : [AMD Ryzen 5 3600 6-Core](https://www.amd.com/en/products/cpu/amd-ryzen-5-3600)
 * Ram : 64 Go DDR4 ECC
 * SSD : [Samsung 980 1Tb M.2](https://www.samsung.com/fr/memory-storage/nvme-ssd/980-1tb-nvme-pcie-gen-3-mz-v8v1t0bw/)
 * Carte réseau : Intel I210AT 1Gb
+
+### 1.1.2 Réseau
+
+- [Zyxell ‎XGS1210-12](https://www.zyxel.com/fr/fr/products_services/12-Port-Web-Managed-Multi-Gigabit-Switch-with-2-Port-2-5G-and-2-Port-10G-SFP--XGS1210-12/)
+
+### 1.1.3 Serveur ou est hébergé iperf
+
+* Carte mère : MSI MS-S0891
+* CPU : Intel E3-1220L v3
+* Ram : 4 Go DDR3 ECC
+* SSD : Kingstow SSDNow V+200
+* Carte réseau : Chelsio  T320 10GbE Dual Port Adapter
+* OS : Debian 10
 
 ## 1.2 Les hyperviseurs
 
@@ -227,7 +242,7 @@ deb-src http://deb.debian.org/debian bullseye-backports main contrib non-free
 ##### 2.2.2.1.2 Prérequis
 
 ```shell
-apt update && apt upgrade -y && apt install -y linux-image-cloud-amd64 wget unzip curl git gnupg gnupg2 p7zip qemu-guest-agent php-cli php-xml bash-completion cmake autoconf golang build-essential apt-file
+apt update && apt upgrade -y && apt install -y linux-image-cloud-amd64 wget unzip curl git gnupg gnupg2 p7zip qemu-guest-agent php-cli php-xml bash-completion cmake autoconf golang build-essential apt-file openssh-server
 ```
 
 ##### 2.2.2.1.3 Hyper-V
@@ -630,12 +645,17 @@ Description :
 | Hyper-V Server 2019 gen 2 UFS | https://openbenchmarking.org/result/2109209-IB-FREEBSDHY16 |
 | Hyper-V Server 2019 gen 1 ZFS | https://openbenchmarking.org/result/2109206-IB-FREEBSDHY29 |
 | Hyper-V Server 2019 gen 2 ZFS | https://openbenchmarking.org/result/2109218-IB-FREEBSDHY04 |
+| Hyper-V Server 2022 gen 1 UFS | https://openbenchmarking.org/result/2109285-IB-FREEBSDHY45 |
 | Proxmox 7 UFS                 | https://openbenchmarking.org/result/2109263-IB-FREEBSDUF65 |
 | Proxmox 7 ZFS                 | https://openbenchmarking.org/result/2109257-IB-FREEBSDPR86 |
 | XCP-ng 8.2 UFS                | https://openbenchmarking.org/result/2109143-IB-BSDUFSXCP55 |
 | XCP-ng 8.2 ZFS                | https://openbenchmarking.org/result/2109147-IB-FREEBSDZF84 |
 
+Preview result :
 
+UFS : https://openbenchmarking.org/result/2109269-IB-FREEBSD1385 & https://openbenchmarking.org/result/2109287-IB-FREEBSDHY41
+
+Physical > ESXi > XCP-ng > Proxmox > Hyper-V 2022 > Hyper-V 2019
 
 ## 3.1.2 Debian 11
 
@@ -645,6 +665,8 @@ Description :
 | ESXi 7u1                  |                                                            |
 | Hyper-V Server 2019 gen 1 | https://openbenchmarking.org/result/2109219-IB-DEBIANHYP47 |
 | Hyper-V Server 2019 gen 2 | https://openbenchmarking.org/result/2109211-IB-DEBIANHYP70 |
+| Hyper-V Server 2022 gen 1 | https://openbenchmarking.org/result/2109279-IB-DEBIANHYP63 |
+| Hyper-V Server 2022 gen 2 | https://openbenchmarking.org/result/2109289-IB-DEBIENHYP30 |
 | Proxmox 7                 | https://openbenchmarking.org/result/2109255-IB-DEBIAN11P85 |
 | XCP-ng 8.2                |                                                            |
 
@@ -658,6 +680,8 @@ Description :
 | ESXi 7u1                  |                                                            |
 | Hyper-V Server 2019 gen 1 | https://openbenchmarking.org/result/2109232-IB-ALMALINUX25 |
 | Hyper-V Server 2019 gen 2 | https://openbenchmarking.org/result/2109239-IB-ALMALINUX35 |
+| Hyper-V Server 2022 gen 1 |                                                            |
+| Hyper-V Server 2022 gen 2 |                                                            |
 | Proxmox 7                 | https://openbenchmarking.org/result/2109259-IB-ALMALINUX18 |
 | XCP-ng 8.2                |                                                            |
 
@@ -671,6 +695,7 @@ Description :
 | ESXi 7u1                  |                                                            |
 | Hyper-V Server 2019 gen 1 | https://openbenchmarking.org/result/2109243-IB-UBUNTU20026 |
 | Hyper-V Server 2019 gen 2 | https://openbenchmarking.org/result/2109231-IB-UBUNTU20067 |
+| Hyper-V Server 2022 gen 2 |                                                            |
 | Proxmox 7                 | https://openbenchmarking.org/result/2109254-IB-UBUNTUPRO72 |
 | XCP-ng 8.2                |                                                            |
 
@@ -684,6 +709,8 @@ Description :
 | ESXi 7u1                  |                                                            |
 | Hyper-V Server 2019 gen 1 | https://openbenchmarking.org/result/2109229-IB-WINDOWS2039 |
 | Hyper-V Server 2019 gen 2 | https://openbenchmarking.org/result/2109199-IB-WIN2009SE38 |
+| Hyper-V Server 2022 gen 1 |                                                            |
+| Hyper-V Server 2022 gen 2 |                                                            |
 | Proxmox 7                 | https://openbenchmarking.org/result/2109257-IB-WINDOWS2030 |
 | XCP-ng 8.2                |                                                            |
 
@@ -693,9 +720,11 @@ Description :
 
 | Tests                     | Résultats sur OpenBenchmarking                             |
 | ------------------------- | ---------------------------------------------------------- |
-| Physique                  |                                                            |
+| Physique                  | https://openbenchmarking.org/result/2109273-IB-WINDOWS2048 |
 | ESXi 7u1                  |                                                            |
 | Hyper-V Server 2019 gen 1 | https://openbenchmarking.org/result/2109243-IB-WINDOWS2099 |
 | Hyper-V Server 2019 gen 2 | https://openbenchmarking.org/result/2109225-IB-WINDOWS2007 |
+| Hyper-V Server 2022 gen 1 |                                                            |
+| Hyper-V Server 2022 gen 2 |                                                            |
 | Proxmox 7                 | Soucis d'adon invité                                       |
 | XCP-ng 8.2                |                                                            |

@@ -30,9 +30,14 @@ Les benchmarks seront effectués via la solution de Phoronix : [Phoronix Test Su
 ## 1.2 Les hyperviseurs
 
 * [XCP-NG 8.2](https://xcp-ng.org)
+
 * [Proxmox Ve 7.0](https://www.proxmox.com)
+
 * [ESXi 7](https://www.vmware.com )
+
 * [Hyper-V Server 2019](https://www.microsoft.com/en-us/evalcenter/evaluate-hyper-v-server-2019)
+
+* [Hyper-V Server 2022](https://www.microsoft.com/fr-fr/evalcenter/evaluate-windows-server-2022)
 
   
 
@@ -43,7 +48,7 @@ Les benchmarks seront effectués via la solution de Phoronix : [Phoronix Test Su
 * [FreeBSD](https://www.freebsd.org) 13
 * [Ubuntu](https://ubuntu.com) 20.04 LTS
 * [Windows Server](https://www.microsoft.com/fr-fr/windows-server) 2019
-* Windows Server 2022
+* [Windows Server 2022](https://www.microsoft.com/fr-fr/evalcenter/evaluate-windows-server-2022)
 
 # **2 Méthodologie**
 
@@ -301,13 +306,19 @@ cd phoronix-test-suite
 
 ### 2.2.3 FreeBSD
 
+#### 2.1.3.1 Procédure installation 
+
+[Installation type de FreeBSD en net install](https://github.com/Nidouille/benchmarks/blob/main/VM-Instalation-FreeBSD.md)
+
+#### 2.1.3.2 Pré requis
+
 ```shell
 pkg install -y bash wget php74 php74-dom php74-zip php74-json php74-simplexml php74-openssl gcc sudo p7zip htop tmux
 freebsd-update fetch
 freebsd-update install
 ```
 
-#### *2.1.3.1 Installation de la suite Phoronix test suite*
+#### *2.1.3.3 Installation de la suite Phoronix test suite*
 
 ```shell
 wget https://phoronix-test-suite.com/releases/phoronix-test-suite-10.4.0.tar.gz
@@ -316,13 +327,13 @@ cd phoronix-test-suite
 ./install-sh
 ```
 
-#### *2.2.3.2 XEN*
+#### *2.2.3.4 XEN*
 
 ```shell
 pkg install xen-guest-tools xe-guest-utilities 
 ```
 
-#### *2.2.3.3 KVM*
+#### *2.2.3.5 KVM*
 
 ```shell
 pkg install -y qemu-guest-agent
@@ -336,7 +347,7 @@ qemu_guest_agent_enable="YES"
 qemu_guest_agent_flags="-d -v -l /var/log/qemu-ga.log"
 ```
 
-#### *2.2.3.4 ESXi*
+#### *2.2.3.6 ESXi*
 
 ```shell
 pkg install open-vm-tools-nox11  
@@ -350,7 +361,7 @@ vmware-guestd_enable="YES"
 
 cf KM : <https://kb.vmware.com/s/article/2149806>
 
-#### 2.2.3.5 Hyper-V
+#### 2.2.3.7 Hyper-V
 
 Intégré dans le kernel .
 
@@ -646,6 +657,7 @@ Description :
 | Hyper-V Server 2019 gen 1 ZFS | https://openbenchmarking.org/result/2109206-IB-FREEBSDHY29 |
 | Hyper-V Server 2019 gen 2 ZFS | https://openbenchmarking.org/result/2109218-IB-FREEBSDHY04 |
 | Hyper-V Server 2022 gen 1 UFS | https://openbenchmarking.org/result/2109285-IB-FREEBSDHY45 |
+| Hyper-V Server 2022 gen 2 UFS |                                                            |
 | Proxmox 7 UFS                 | https://openbenchmarking.org/result/2109263-IB-FREEBSDUF65 |
 | Proxmox 7 ZFS                 | https://openbenchmarking.org/result/2109257-IB-FREEBSDPR86 |
 | XCP-ng 8.2 UFS                | https://openbenchmarking.org/result/2109143-IB-BSDUFSXCP55 |
@@ -680,8 +692,8 @@ Physical > ESXi > XCP-ng > Proxmox > Hyper-V 2022 > Hyper-V 2019
 | ESXi 7u1                  |                                                            |
 | Hyper-V Server 2019 gen 1 | https://openbenchmarking.org/result/2109232-IB-ALMALINUX25 |
 | Hyper-V Server 2019 gen 2 | https://openbenchmarking.org/result/2109239-IB-ALMALINUX35 |
-| Hyper-V Server 2022 gen 1 |                                                            |
-| Hyper-V Server 2022 gen 2 |                                                            |
+| Hyper-V Server 2022 gen 1 | https://openbenchmarking.org/result/2109289-IB-ALMALINUX24 |
+| Hyper-V Server 2022 gen 2 | https://openbenchmarking.org/result/2109295-IB-ALMALINUX40 |
 | Proxmox 7                 | https://openbenchmarking.org/result/2109259-IB-ALMALINUX18 |
 | XCP-ng 8.2                |                                                            |
 
@@ -728,3 +740,4 @@ Physical > ESXi > XCP-ng > Proxmox > Hyper-V 2022 > Hyper-V 2019
 | Hyper-V Server 2022 gen 2 |                                                            |
 | Proxmox 7                 | Soucis d'adon invité                                       |
 | XCP-ng 8.2                |                                                            |
+

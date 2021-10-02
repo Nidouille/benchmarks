@@ -23,7 +23,7 @@ Les benchmarks seront effectués via la solution de Phoronix : [Phoronix Test Su
 * Carte mère : MSI MS-S0891
 * CPU : Intel E3-1220L v3
 * Ram : 4 Go DDR3 ECC
-* SSD : Kingstow SSDNow V+200
+* SSD : Kingston SSDNow V+200
 * Carte réseau : Chelsio  T320 10GbE Dual Port Adapter
 * OS : Debian 10
 
@@ -93,19 +93,19 @@ yum update -y
 
 
 
-### 2.1.2 ESXi
+### 2.1.3 ESXi
 
 
 
-### 2.1.2 Hyper-V
+### 2.1.4 Hyper-V
 
 Utilisation de la version de Hyper-V Server 2019 disponible en téléchargement gratuit sur le site de Microsoft [Evaluation Center](https://www.microsoft.com/en-us/evalcenter/evaluate-hyper-v-server-2019) 
 
-#### 2.1.2.1 Paramétrage de l'utilisation a distance
+#### 2.1.4.1 Paramétrage de l'utilisation à distance
 
 source : [Remotely manage Hyper-V hosts with Hyper-V Manager](https://docs.microsoft.com/en-us/windows-server/virtualization/hyper-v/manage/remotely-manage-hyper-v-hosts)
 
-##### 2.1.2.1.1 Sur le serveur Hyper-V
+##### 2.1.4.1.1 Sur le serveur Hyper-V
 
 Passage de l'interface réseau en Private
 
@@ -126,7 +126,7 @@ Enable-PSRemoting
 Enable-WSManCredSSP -Role Server
 ```
 
-##### 2.1.2.1.1 Sur le client Windows 10
+##### 2.1.4.1.2 Sur le client Windows 10
 
 Installation de la console de gestion Hyper-V
 
@@ -154,9 +154,9 @@ Capture d'écran
 
 
 
-Désactivation du firewall
+Désactivation du pare-feu
 
-#### 2.1.2.10 Désactivation de l'IPv6
+#### 2.1.4.2 Désactivation de l'IPv6
 
 Je désactive l'IPv6 car non utilisé dans mon infrastructure de test.
 Pour cela lister les interfaces réseaux disponibles
@@ -172,7 +172,7 @@ Get-NetAdapterBinding -Name "nom de l'interface qui nous intéresse"
 Disable-NetAdapterBinding -Name "Ethernet0 2" -ComponentID ms_tcpip6 -PassThru
 ```
 
-### 2.1.2.2 Linux/FreeBSD
+#### 2.1.4.3 Linux/FreeBSD
 
 Microsoft a intégré le support d'Hyper-V dans certains OS comme FreeBSD et Ubuntu, ce qui permet l'utilisation de ces OS en mode full virtualisation dit generation 2.
 
@@ -195,7 +195,7 @@ Cette opération se fait lors de installation de l'OS
 ![](https://github.com/Nidouille/benchmarks/blob/main/pics/Almalinix-Install-1.png)
 
 
-#### 2.2.1.2 Pré requis
+#### 2.2.1.2 Prérequis
 
 Installation du dépôt EPEL
 
@@ -217,7 +217,7 @@ dnf install -y hyperv-daemons hyperv-tools
 
 
 
-#### *2.2.1.5 Installation de la suite Phroronix test suite*
+#### 2.2.1.4 Installation de la suite de test *Phroronix*
 
 ```shell
 wget https://phoronix-test-suite.com/releases/phoronix-test-suite-10.4.0.tar.gz
@@ -230,7 +230,7 @@ cd phoronix-test-suite
 
 ### 2.2.2 Debian/Ubuntu
 
-#### *2.2.2.1 Debian*
+#### 2.2.2.1 Debian
 
 L'installation de base est la plus minimale possible en partition ext4 dans un seul volume
 ![alt text](https://github.com/Nidouille/benchmarks/blob/main/pics/debian-1.png)
@@ -287,7 +287,7 @@ apt install -y linux-image-azure
 
 Source : [Supported Ubuntu virtual machines on Hyper-V](https://docs.microsoft.com/en-us/windows-server/virtualization/hyper-v/supported-ubuntu-virtual-machines-on-hyper-v) 
 
-##### 2.2.2.2.1 KVM
+##### 2.2.2.2.2 KVM
 
 ```shell
 apt install -y linux-image-kvm qemu-guest-agent
@@ -295,7 +295,7 @@ apt install -y linux-image-kvm qemu-guest-agent
 
 
 
-#### *2.2.2.3 Installation de la suite Phoronix test suite*
+#### 2.2.2.3 Installation de la suite de test *Phoronix*
 
 ```shell
 wget https://phoronix-test-suite.com/releases/phoronix-test-suite-10.4.0.tar.gz
@@ -306,11 +306,11 @@ cd phoronix-test-suite
 
 ### 2.2.3 FreeBSD
 
-#### 2.1.3.1 Procédure installation 
+#### 2.2.3.1 Procédure installation 
 
 [Installation type de FreeBSD en net install](https://github.com/Nidouille/benchmarks/blob/main/VM-Instalation-FreeBSD.md)
 
-#### 2.1.3.2 Pré requis
+#### 2.2.3.2 Prérequis
 
 ```shell
 pkg install -y bash wget php74 php74-dom php74-zip php74-json php74-simplexml php74-openssl gcc sudo p7zip htop tmux
@@ -318,7 +318,7 @@ freebsd-update fetch
 freebsd-update install
 ```
 
-#### *2.1.3.3 Installation de la suite Phoronix test suite*
+#### 2.2.3.3 Installation de la suite de test *Phoronix*
 
 ```shell
 wget https://phoronix-test-suite.com/releases/phoronix-test-suite-10.4.0.tar.gz
@@ -327,13 +327,13 @@ cd phoronix-test-suite
 ./install-sh
 ```
 
-#### *2.2.3.4 XEN*
+#### 2.2.3.4 XEN
 
 ```shell
 pkg install xen-guest-tools xe-guest-utilities 
 ```
 
-#### *2.2.3.5 KVM*
+#### 2.2.3.5 KVM
 
 ```shell
 pkg install -y qemu-guest-agent
@@ -347,7 +347,7 @@ qemu_guest_agent_enable="YES"
 qemu_guest_agent_flags="-d -v -l /var/log/qemu-ga.log"
 ```
 
-#### *2.2.3.6 ESXi*
+#### 2.2.3.6 ESXi
 
 ```shell
 pkg install open-vm-tools-nox11  
@@ -359,16 +359,16 @@ Et dans /etc/rc.conf
 vmware-guestd_enable="YES"
 ```
 
-cf KM : <https://kb.vmware.com/s/article/2149806>
+cf KB : <https://kb.vmware.com/s/article/2149806>
 
 #### 2.2.3.7 Hyper-V
 
-Intégré dans le kernel .
+Intégré dans le kernel.
 
 
 ### 2.2.4 Windows
 
-#### *2.2.4.1 Installation de la suite Phoronix test suite*
+#### 2.2.4.1 Installation de la suite de test *Phoronix*
 
 ```powershell
 Invoke-WebRequest https://github.com/phoronix-test-suite/phoronix-test-suite/archive/v10.4.0.zip -OutFile c:\v10.4.0.zip
@@ -379,9 +379,9 @@ cd C:\phoronix-test-suite-10.4.0\
 
 
 
-#### *2.2.4.2 XEN*
+#### 2.2.4.2 XEN
 
-#### *2.2.4.3 KVM*
+#### 2.2.4.3 KVM
 
 https://github.com/virtio-win/virtio-win-pkg-scripts
 
@@ -455,7 +455,7 @@ Apache HTTP Server 2.4.48:
 
 
 
-#### *2.3.7.2 BlogBench 1.1*
+#### 2.3.7.2 BlogBench 1.1
 
 ```shell
 BlogBench 1.1:
@@ -470,7 +470,7 @@ Disk Test Configuration
 
 
 
-#### *2.3.7.3 Iperf 3.7*
+#### 2.3.7.3 Iperf 3.7
 
 ```shell
 iPerf 3.7:
@@ -515,7 +515,7 @@ Enter Positive Number: **5201**
 
 
 
-#### *2.3.7.4 John The Ripper*
+#### 2.3.7.4 John The Ripper
 
 ```shell
 John The Ripper 1.9.0-jumbo-1:
@@ -545,7 +545,7 @@ OpenSSL 3.0:
 
 
 
-#### *2.3.7.6 t-test1*
+#### 2.3.7.6 t-test1
 
 ```shell
 t-test1 2017-01-13:
@@ -579,7 +579,7 @@ nginx 1.21.1:
 
 
 
-#### *2.3.7.8 mysqlslap*
+#### 2.3.7.8 mysqlslap
 
 ```shell
 MariaDB 10.6.4:
@@ -603,7 +603,7 @@ MariaDB 10.6.4:
 
 
 
-#### *2.3.7.9 pgbench* 
+#### 2.3.7.9 pgbench
 
 ```shell
 PostgreSQL pgbench 13.0:

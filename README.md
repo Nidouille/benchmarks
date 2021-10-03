@@ -390,7 +390,8 @@ https://github.com/virtio-win/virtio-win-pkg-scripts
 Source des vmtools : https://packages.vmware.com/tools/releases/
 
 ```powershell
-Invoke-WebRequest https://packages.vmware.com/tools/releases/latest/windows/VMware-tools-windows-11.3.5-18557794.iso
+Invoke-WebRequest https://packages.vmware.com/tools/releases/latest/windows/x64/VMware-tools-11.3.5-18557794-x86_64.exe -OutFile c:\VMware-tools-11.3.5-18557794-x86_64.exe
+C:\VMware-tools-11.3.5-18557794-x86_64.exe
 ```
 
 
@@ -661,7 +662,7 @@ Description :
 | Physique UFS                  | https://openbenchmarking.org/result/2109170-IB-FREEBSDAS89 |
 | Physique ZFS                  | https://openbenchmarking.org/result/2109123-IB-NIDOUILLE82 |
 | ESXi 7u1 UFS                  | https://openbenchmarking.org/result/2109137-IB-NIDOUILLE37 |
-| ESXi 7u1 ZFS                  |                                                            |
+| ESXi 7u1 ZFS                  | https://openbenchmarking.org/result/2110017-IB-FREEBSDZF86 |
 | Hyper-V Server 2019 gen 1 UFS | https://openbenchmarking.org/result/2109202-IB-FREEBSDHY89 |
 | Hyper-V Server 2019 gen 2 UFS | https://openbenchmarking.org/result/2109209-IB-FREEBSDHY16 |
 | Hyper-V Server 2019 gen 1 ZFS | https://openbenchmarking.org/result/2109206-IB-FREEBSDHY29 |
@@ -685,40 +686,44 @@ Physical > ESXi > XCP-ng > Proxmox > Hyper-V 2022 > Hyper-V 2019
 
 | Tests                     | Résultats sur OpenBenchmarking                             |
 | ------------------------- | ---------------------------------------------------------- |
-| Physique                  |                                                            |
-| ESXi 7u1                  |                                                            |
+| Physique                  | https://openbenchmarking.org/result/2110032-IB-DEBIAN11P93 |
+| ESXi 7u1                  | https://openbenchmarking.org/result/2110022-IB-DEBIAN11E16 |
 | Hyper-V Server 2019 gen 1 | https://openbenchmarking.org/result/2109219-IB-DEBIANHYP47 |
 | Hyper-V Server 2019 gen 2 | https://openbenchmarking.org/result/2109211-IB-DEBIANHYP70 |
 | Hyper-V Server 2022 gen 1 | https://openbenchmarking.org/result/2109279-IB-DEBIANHYP63 |
 | Hyper-V Server 2022 gen 2 | https://openbenchmarking.org/result/2109289-IB-DEBIENHYP30 |
 | Proxmox 7                 | https://openbenchmarking.org/result/2109255-IB-DEBIAN11P85 |
-| XCP-ng 8.2                |                                                            |
+| XCP-ng 8.2                | https://openbenchmarking.org/result/2110038-IB-ALMALINUX15 |
 
-
+Preview result : https://openbenchmarking.org/result/2110029-IB-DEBIANHYP10
 
 ## 3.1.3 AlmaLinux 8.4
 
-| Tests                     | Résultats sur OpenBenchmarking                             |
-| ------------------------- | ---------------------------------------------------------- |
-| Physique                  | https://openbenchmarking.org/result/2110028-IB-ALMALINUX84 |
-| ESXi 7u1                  | https://openbenchmarking.org/result/2110027-IB-ALMALINUX16 |
-| Hyper-V Server 2019 gen 1 | https://openbenchmarking.org/result/2109232-IB-ALMALINUX25 |
-| Hyper-V Server 2019 gen 2 | https://openbenchmarking.org/result/2109239-IB-ALMALINUX35 |
-| Hyper-V Server 2022 gen 1 | https://openbenchmarking.org/result/2109289-IB-ALMALINUX24 |
-| Hyper-V Server 2022 gen 2 | https://openbenchmarking.org/result/2109295-IB-ALMALINUX40 |
-| Proxmox 7                 | https://openbenchmarking.org/result/2109259-IB-ALMALINUX18 |
-| XCP-ng 8.2                |                                                            |
+| Tests                     | Résultats sur OpenBenchmarking                               |
+| ------------------------- | ------------------------------------------------------------ |
+| Physique                  | https://openbenchmarking.org/result/2110028-IB-ALMALINUX84   |
+| ESXi 7u1                  | https://openbenchmarking.org/result/2110030-IB-ALALINUX810 <br />https://openbenchmarking.org/result/2110027-IB-ALMALINUX16 |
+| Hyper-V Server 2019 gen 1 | https://openbenchmarking.org/result/2109232-IB-ALMALINUX25   |
+| Hyper-V Server 2019 gen 2 | https://openbenchmarking.org/result/2109239-IB-ALMALINUX35   |
+| Hyper-V Server 2022 gen 1 | https://openbenchmarking.org/result/2109289-IB-ALMALINUX24   |
+| Hyper-V Server 2022 gen 2 | https://openbenchmarking.org/result/2109295-IB-ALMALINUX40   |
+| Proxmox 7                 | https://openbenchmarking.org/result/2109259-IB-ALMALINUX18   |
+| XCP-ng 8.2                |                                                              |
 
 Preview result : https://openbenchmarking.org/result/2110029-IB-MERGE747352
 
 Physical > ESXi > Proxmox > Hyper-V 2022 > Hyper-V 2019
+
+
+
+Final result : https://openbenchmarking.org/result/2110031-IB-MERGE909431
 
 ## 3.1.4 Ubuntu 20.04 LTS
 
 | Tests                     | Résultats sur OpenBenchmarking                             |
 | ------------------------- | ---------------------------------------------------------- |
 | Physique                  |                                                            |
-| ESXi 7u1                  |                                                            |
+| ESXi 7u1                  | https://openbenchmarking.org/result/2110034-IB-UBUNTU20050 |
 | Hyper-V Server 2019 gen 1 | https://openbenchmarking.org/result/2109243-IB-UBUNTU20026 |
 | Hyper-V Server 2019 gen 2 | https://openbenchmarking.org/result/2109231-IB-UBUNTU20067 |
 | Hyper-V Server 2022 gen 1 | https://openbenchmarking.org/result/2110015-IB-UBUNTU20022 |
@@ -733,7 +738,7 @@ Physical > ESXi > Proxmox > Hyper-V 2022 > Hyper-V 2019
 | Tests                     | Résultats sur OpenBenchmarking                             |
 | ------------------------- | ---------------------------------------------------------- |
 | Physique                  | https://openbenchmarking.org/result/2109266-IB-WINDOWS2048 |
-| ESXi 7u1                  |                                                            |
+| ESXi 7u1                  | https://openbenchmarking.org/result/2110026-IB-WINDOWS2085 |
 | Hyper-V Server 2019 gen 1 | https://openbenchmarking.org/result/2109229-IB-WINDOWS2039 |
 | Hyper-V Server 2019 gen 2 | https://openbenchmarking.org/result/2109199-IB-WIN2009SE38 |
 | Hyper-V Server 2022 gen 1 | https://openbenchmarking.org/result/2109296-IB-WINDOWS2008 |
@@ -748,7 +753,7 @@ Physical > ESXi > Proxmox > Hyper-V 2022 > Hyper-V 2019
 | Tests                     | Résultats sur OpenBenchmarking                             |
 | ------------------------- | ---------------------------------------------------------- |
 | Physique                  | https://openbenchmarking.org/result/2109273-IB-WINDOWS2048 |
-| ESXi 7u1                  |                                                            |
+| ESXi 7u1                  | https://openbenchmarking.org/result/2110024-IB-WINDOWS2017 |
 | Hyper-V Server 2019 gen 1 | https://openbenchmarking.org/result/2109243-IB-WINDOWS2099 |
 | Hyper-V Server 2019 gen 2 | https://openbenchmarking.org/result/2109225-IB-WINDOWS2007 |
 | Hyper-V Server 2022 gen 1 | https://openbenchmarking.org/result/2109304-IB-WINDOWS2041 |

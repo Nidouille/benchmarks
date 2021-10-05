@@ -655,7 +655,7 @@ Description :
 
 
 
-## 3.1.1 FreeBSD 13
+### 3.1.1 FreeBSD 13
 
 | Tests                         | Résultats sur OpenBenchmarking                             |
 | :---------------------------- | ---------------------------------------------------------- |
@@ -682,7 +682,7 @@ UFS : https://openbenchmarking.org/result/2109269-IB-FREEBSD1385 & https://openb
 
 Physical > ESXi > XCP-ng > Proxmox > Hyper-V 2022 > Hyper-V 2019
 
-## 3.1.2 Debian 11
+### 3.1.2 Debian 11
 
 | Tests                     | Résultats sur OpenBenchmarking                             |
 | ------------------------- | ---------------------------------------------------------- |
@@ -697,7 +697,7 @@ Physical > ESXi > XCP-ng > Proxmox > Hyper-V 2022 > Hyper-V 2019
 
 Preview result : https://openbenchmarking.org/result/2110029-IB-DEBIANHYP10
 
-## 3.1.3 AlmaLinux 8.4
+### 3.1.3 AlmaLinux 8.4
 
 | Tests                     | Résultats sur OpenBenchmarking                               |
 | ------------------------- | ------------------------------------------------------------ |
@@ -708,7 +708,7 @@ Preview result : https://openbenchmarking.org/result/2110029-IB-DEBIANHYP10
 | Hyper-V Server 2022 gen 1 | https://openbenchmarking.org/result/2109289-IB-ALMALINUX24   |
 | Hyper-V Server 2022 gen 2 | https://openbenchmarking.org/result/2109295-IB-ALMALINUX40   |
 | Proxmox 7                 | https://openbenchmarking.org/result/2109259-IB-ALMALINUX18   |
-| XCP-ng 8.2                |                                                              |
+| XCP-ng 8.2                | https://openbenchmarking.org/result/2110046-IB-ALMALINUX25   |
 
 Preview result : https://openbenchmarking.org/result/2110029-IB-MERGE747352
 
@@ -718,7 +718,7 @@ Physical > ESXi > Proxmox > Hyper-V 2022 > Hyper-V 2019
 
 Final result : https://openbenchmarking.org/result/2110031-IB-MERGE909431
 
-## 3.1.4 Ubuntu 20.04 LTS
+### 3.1.4 Ubuntu 20.04 LTS
 
 | Tests                     | Résultats sur OpenBenchmarking                             |
 | ------------------------- | ---------------------------------------------------------- |
@@ -729,11 +729,11 @@ Final result : https://openbenchmarking.org/result/2110031-IB-MERGE909431
 | Hyper-V Server 2022 gen 1 | https://openbenchmarking.org/result/2110015-IB-UBUNTU20022 |
 | Hyper-V Server 2022 gen 2 | https://openbenchmarking.org/result/2109292-IB-UBUNTU20035 |
 | Proxmox 7                 | https://openbenchmarking.org/result/2109254-IB-UBUNTUPRO72 |
-| XCP-ng 8.2                |                                                            |
+| XCP-ng 8.2                | https://openbenchmarking.org/result/2110059-IB-UBUNTU20004 |
 
 
 
-## 3.1.5 Windows 2019 Server Core
+### 3.1.5 Windows 2019 Server Core
 
 | Tests                     | Résultats sur OpenBenchmarking                             |
 | ------------------------- | ---------------------------------------------------------- |
@@ -744,11 +744,11 @@ Final result : https://openbenchmarking.org/result/2110031-IB-MERGE909431
 | Hyper-V Server 2022 gen 1 | https://openbenchmarking.org/result/2109296-IB-WINDOWS2008 |
 | Hyper-V Server 2022 gen 2 | https://openbenchmarking.org/result/2109294-IB-WINDOWS2061 |
 | Proxmox 7                 | https://openbenchmarking.org/result/2109257-IB-WINDOWS2030 |
-| XCP-ng 8.2                |                                                            |
+| XCP-ng 8.2                | https://openbenchmarking.org/result/2110045-IB-WINDOWS2030 |
 
 
 
-## 3.1.6 Windows 2022 Server Core
+### 3.1.6 Windows 2022 Server Core
 
 | Tests                     | Résultats sur OpenBenchmarking                             |
 | ------------------------- | ---------------------------------------------------------- |
@@ -759,5 +759,38 @@ Final result : https://openbenchmarking.org/result/2110031-IB-MERGE909431
 | Hyper-V Server 2022 gen 1 | https://openbenchmarking.org/result/2109304-IB-WINDOWS2041 |
 | Hyper-V Server 2022 gen 2 | https://openbenchmarking.org/result/2109308-IB-WINDOWS2010 |
 | Proxmox 7                 | Soucis d'adon invité                                       |
-| XCP-ng 8.2                |                                                            |
+| XCP-ng 8.2                | https://openbenchmarking.org/result/2110040-IB-WINDOWS2093 |
 
+## 3.2 Analyse
+
+### 3.2.1 Almalinux 8.4
+
+https://openbenchmarking.org/result/2110054-IB-MERGE509457
+
+### 3.2.2 Debian 11
+
+https://openbenchmarking.org/result/2110032-IB-MERGE163032
+
+
+
+### 3.2.3 FreeBSD 13
+
+UFS : https://openbenchmarking.org/result/2110052-IB-FREEBSDUF55
+
+ZFS : https://openbenchmarking.org/result/2110053-IB-FREEBSDZF95
+
+### 3.2.4 Ubuntu 20.04
+
+
+
+### 3.2.5 Windows Server
+
+
+
+Windows 2019 : https://openbenchmarking.org/result/2110052-IB-MERGE869594
+
+Windows 2022 : https://openbenchmarking.org/result/2110053-IB-MERGE489288
+
+
+
+# 4 Conclusion
